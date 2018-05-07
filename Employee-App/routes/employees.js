@@ -18,7 +18,6 @@ router.get('/:id', function(req, res, next){
 });
 
 
-
 router.post('/', function(req,res,next){
    
     employeeService.addNewEmployee(res, req.body);
@@ -36,7 +35,6 @@ router.delete('/:id', function(req,res,next){
     employeeService.deleteEmployeeById(res, req.body, req.params.id);
 
 });
-
 
 
 module.exports = router;

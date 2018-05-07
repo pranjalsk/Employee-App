@@ -11,7 +11,6 @@ models.createModels();
 
 //Routes
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var employeeRouter = require('./routes/employees');
 
 
@@ -30,7 +29,6 @@ app.use(bodyParser.json());
 
 //Register Routes
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/employees', employeeRouter);
 
 
