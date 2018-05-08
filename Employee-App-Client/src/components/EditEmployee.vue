@@ -1,12 +1,5 @@
 <template>
 <div>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1>Human Capital Information System</h1>      
-            <h5>This application provides information about all the employees at "Hogwards Corporation"</h5>
-        </div>
-    </div>
-
     <div class="container">
         <form>
             <div class="form-group row">

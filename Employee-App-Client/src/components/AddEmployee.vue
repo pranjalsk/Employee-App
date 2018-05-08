@@ -1,12 +1,5 @@
 <template>
     <div>
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1>Human Capital Information System</h1>      
-                <h5>This application provides information about all the employees at "Hogwards Corporation"</h5>
-            </div>
-        </div>
-
         <div class="container">
         <form>
             <div class="form-group row">
@@ -47,7 +40,7 @@
             <div class="form-group row">
                 <label for="colFormLabel" class="col-sm-2 col-form-label">Base Salary</label>
                 <div class="col-sm-6">
-                <input v-model="emp.baseSalary" type="input" class="form-control" id="Base Salary" required>
+                <input v-model="emp.baseSalary" type="input" class="form-control" id="BaseSalary" required>
                 </div>
             </div>
 
@@ -61,14 +54,14 @@
             <div class="form-group row">
                 <label for="colFormLabel" class="col-sm-2 col-form-label">Tax 401k Deductions</label>
                 <div class="col-sm-6">
-                <input v-model="emp.tax401k" type="input" class="form-control" id="Tax 401k Deductions" required>
+                <input v-model="emp.tax401k" type="input" class="form-control" id="Tax401kDeductions" required>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="colFormLabel" class="col-sm-2 col-form-label">Medical Deductions</label>
                 <div class="col-sm-6">
-                <input v-model="emp.medical" type="input" class="form-control" id="Medical Deductions" required>
+                <input v-model="emp.medical" type="input" class="form-control" id="MedicalDeductions" required>
                 </div>
             </div>
 

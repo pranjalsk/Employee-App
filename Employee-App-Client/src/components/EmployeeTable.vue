@@ -1,18 +1,11 @@
 <template>
     <div>
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1>Human Capital Information System</h1>      
-                <h5>This application provides information about all the employees at "Hogwards Corporation"</h5>
-            </div>
-        </div>
-
         <div class="container">
             <button v-on:click="gotoHome()" type="button" class="btn btn-success">Home</button>
-            <button type="button" class="btn btn-success">Add New Employee</button>
+            <button v-on:click="gotoNewEmployees()" type="button" class="btn btn-success">Add new Employees</button>
         </div>
 
-
+        <br/>
         <div class="container">
             <md-table v-model="employees" :md-sort.sync="currentSort" :md-sort-order.sync="currentSortOrder" :md-sort-fn="customSort" md-card>
             <md-table-toolbar>
@@ -37,10 +30,7 @@
             </md-table-row>
             </md-table>
         </div>
-
-
     </div>
-
 </template>
 
 <script>
@@ -77,7 +67,12 @@ export default {
               params: {}
           });
       },
-
+      gotoNewEmployees: function(){
+          this.$router.push({
+              name: 'addEmployee',
+              params: {}
+          });
+      },
       customSort (value) {
         return value.sort((a, b) => {
           const sortBy = this.currentSort

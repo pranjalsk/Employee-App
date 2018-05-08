@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-      <router-view name="home-view"></router-view>
+
+      <app-homeview></app-homeview>
+      <br/>
       <router-view name="employee-table-view"></router-view>
       <router-view name="employee-view"></router-view>
       <router-view name="employee-edit-view"></router-view>
