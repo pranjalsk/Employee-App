@@ -1,10 +1,10 @@
 <template>
 <div>
     <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1>Human Capital Information System</h1>      
-                <h5>This application provides information about all the employees at "Hogwards Corporation"</h5>
-            </div>
+        <div class="container">
+            <h1>Human Capital Information System</h1>      
+            <h5>This application provides information about all the employees at "Hogwards Corporation"</h5>
+        </div>
     </div>
 
     <div class="container">
@@ -72,7 +72,7 @@
                 </div>
             </div>
 
-
+            <button v-on:click="putChanges" type="button" class="btn btn-success">Save Changes</button>
         </form>
     </div>
 
@@ -106,16 +106,55 @@ function populateEmployeeInfo(vm){
     });
 }
 
+function updateEmployeeRecord(vm){
+    let  employeeid = vm.$route.params.employeeid;
+    let putbody = {
+                name : {
+                    firstName : vm.emp.firstName,
+                    middleName : vm.emp.middleName,
+                    lastName : vm.emp.lastName
+                },
+                department : vm.emp.department,
+                role : vm.emp.role,
+                compensation:{
+                    salary:{
+                        baseSalary: vm.emp.baseSalary,
+                        allowance : vm.emp.allowance
+                    },
+                    deductions:{
+                        tax401k: vm.emp.tax401k,
+                        medical: vm.emp.medical
+                    }
+                }
+            };
+
+
+    console.log(putbody);
+    axios.put(`http://localhost:3000/employees/`+employeeid, putbody)
+    .then(response => {
+        //TODO if true...tell success
+        console.log(response.data);
+    })
+    .catch(e => {
+      this.errors.push(e)
+    })  
+
+};
+
 
 
 
 export default {
   data() {
     return {
-        employeeid : this.$route.params.employeeid,
         emp: {},
         errors: []
     };
+  },
+  methods:{
+      putChanges: function(){
+          updateEmployeeRecord(this);
+      }
   },
   created() {
         populateEmployeeInfo(this);
