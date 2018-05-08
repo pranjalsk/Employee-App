@@ -1,13 +1,13 @@
 <template>
-<div>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1>Human Capital Information System</h1>      
-            <h5>This application provides information about all the employees at "Hogwards Corporation"</h5>
+    <div>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1>Human Capital Information System</h1>      
+                <h5>This application provides information about all the employees at "Hogwards Corporation"</h5>
+            </div>
         </div>
-    </div>
 
-    <div class="container">
+        <div class="container">
         <form>
             <div class="form-group row">
                 <label for="colFormLabel" class="col-sm-2 col-form-label">FirstName</label>
@@ -72,43 +72,20 @@
                 </div>
             </div>
 
-            <button v-on:click="putChanges" type="button" class="btn btn-success">Save Changes</button>
+            <button v-on:click="postChanges" type="button" class="btn btn-success">Save Employee</button>
         </form>
     </div>
 
-</div>
+    </div>
 </template>
+
 
 <script>
 
 import axios from "axios";
 
-function populateEmployeeInfo(vm){
-    let  employeeid = vm.$route.params.employeeid;
-
-    axios
-    .get(`http://localhost:3000/employees/`+employeeid)
-    .then(response => {
-        vm.emp = {};
-        vm.emp.firstName = response.data.employee.name.firstName;
-        vm.emp.middleName = response.data.employee.name.middleName;
-        vm.emp.lastName = response.data.employee.name.lastName;
-        vm.emp.role = response.data.employee.role;
-        vm.emp.department = response.data.employee.department;
-        vm.emp.baseSalary = response.data.employee.compensation.salary.baseSalary;
-        vm.emp.allowance = response.data.employee.compensation.salary.allowance;
-        vm.emp.tax401k = response.data.employee.compensation.deductions.tax401k;
-        vm.emp.medical = response.data.employee.compensation.deductions.medical;
-        console.log(vm.emp);
-    })
-    .catch(err => {
-      vm.errors.push(err);
-    });
-}
-
-function updateEmployeeRecord(vm){
-    let  employeeid = vm.$route.params.employeeid;
-    let putbody = {
+function addEmployeeRecord(vm){
+    let postbody = {
                 name : {
                     firstName : vm.emp.firstName,
                     middleName : vm.emp.middleName,
@@ -128,8 +105,8 @@ function updateEmployeeRecord(vm){
                 }
             };
 
-    console.log(putbody);
-    axios.put(`http://localhost:3000/employees/`+employeeid, putbody)
+    console.log(postbody);
+    axios.post(`http://localhost:3000/employees/`, postbody)
     .then(response => {
         //TODO if true...tell success
         console.log(response.data);
@@ -149,19 +126,18 @@ export default {
     };
   },
   methods:{
-      putChanges: function(){
-          updateEmployeeRecord(this);
+      postChanges: function(){
+          addEmployeeRecord(this);
       }
   },
   created() {
-        populateEmployeeInfo(this);
+        
   }
 
 };
 
-
-
 </script>
+
 
 <style>
 

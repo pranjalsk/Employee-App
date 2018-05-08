@@ -2,6 +2,7 @@ import HomeView from './components/HomeView.vue'
 import EmployeeTable from './components/EmployeeTable.vue'
 import ViewEmployee from './components/ViewEmployee.vue'
 import EditEmployee from './components/EditEmployee.vue'
+import AddEmployee from './components/AddEmployee.vue'
 
 export const routes = [{
     path: '/',
@@ -22,6 +23,13 @@ export const routes = [{
     name: 'viewEmployee',
     components: {
       'employee-view': ViewEmployee,
+    },
+  },
+  {
+    path: '/employees/add/employee',
+    name: 'addEmployee',
+    components: {
+      'employee-add-view': AddEmployee,
     },
   },
   {

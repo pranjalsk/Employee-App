@@ -9,6 +9,7 @@ import HomeView from './components/HomeView.vue'
 import EmployeeTable from './components/EmployeeTable.vue'
 import ViewEmployee from './components/ViewEmployee.vue'
 import EditEmployee from './components/EditEmployee.vue'
+import AddEmployee from './components/AddEmployee.vue'
 
 
 // Routes resitration
@@ -21,6 +22,7 @@ Vue.component('app-homeview', HomeView);
 Vue.component('app-employeeTableView', EmployeeTable);
 Vue.component('app-viewEmployee', ViewEmployee);
 Vue.component('app-editEmployee', EditEmployee);
+Vue.component('app-addEmployee', AddEmployee);
 
 
 const router = new VueRouter({
