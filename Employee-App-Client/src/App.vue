@@ -3,6 +3,7 @@
       <router-view name="home-view"></router-view>
       <router-view name="employee-table-view"></router-view>
       <router-view name="employee-view"></router-view>
+      <router-view name="employee-edit-view"></router-view>
   </div>
 </template>
 

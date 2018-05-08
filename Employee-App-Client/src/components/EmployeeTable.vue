@@ -27,6 +27,13 @@
                 </md-table-cell>
                 <md-table-cell md-label="Department" md-sort-by="department">{{ item.department }}</md-table-cell>
                 <md-table-cell md-label="Role" md-sort-by="role">{{ item.role }}</md-table-cell>
+                <md-table-cell>
+                    <router-link :to="{ name:'editEmployee', params:{ employeeid:item.employeeId }}">
+                    <md-button class="md-raised md-primary">
+                        Edit
+                    </md-button>
+                    </router-link>
+                </md-table-cell>
             </md-table-row>
             </md-table>
         </div>
@@ -63,13 +70,14 @@ export default {
     };
   },
   methods: {
-  
+      
       gotoHome: function(){
           this.$router.push({
               name: 'home',
               params: {}
           });
       },
+
       customSort (value) {
         return value.sort((a, b) => {
           const sortBy = this.currentSort

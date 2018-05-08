@@ -8,7 +8,7 @@ import 'vue-material/dist/vue-material.min.css'
 import HomeView from './components/HomeView.vue'
 import EmployeeTable from './components/EmployeeTable.vue'
 import ViewEmployee from './components/ViewEmployee.vue'
-
+import EditEmployee from './components/EditEmployee.vue'
 
 
 // Routes resitration
@@ -20,6 +20,7 @@ Vue.use(VueMaterial)
 Vue.component('app-homeview', HomeView);
 Vue.component('app-employeeTableView', EmployeeTable);
 Vue.component('app-viewEmployee', ViewEmployee);
+Vue.component('app-editEmployee', EditEmployee);
 
 
 const router = new VueRouter({
