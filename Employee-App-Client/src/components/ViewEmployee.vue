@@ -1,7 +1,7 @@
 <template>
 
 <div>
-        <div class="container">
+        <div class="container col-md-6">
               <table class= "table table-user-information">
               <tbody>
                 <tr>
@@ -84,6 +84,14 @@ function getEmployeeInfo(vm){
     })
     .catch(err => {
       vm.errors.push(err);
+      let errObj = JSON.parse(JSON.stringify(err));
+      this.$toastr('add', {
+      title: 'Bad request', // Toast Title
+      msg: errObj.response.data, // Message
+      timeout: 5000, // Timeout in ms
+      position: 'toast-bottom-full-width', // Toastr position
+      type: 'error' // Toastr type
+      });
     });
 }
 

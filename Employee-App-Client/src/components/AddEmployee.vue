@@ -112,6 +112,14 @@ function addEmployeeRecord(vm){
     axios.post( vm.$store.state.IP_Config +`/employees/`, postbody)
     .then(response => {
         //TODO if true...tell success
+        if(response.data.success){
+            vm.$toastr('add', {
+                            title: 'Successfully Posted', // Toast Title
+                            msg: '', // Message
+                            timeout: 2000, // Timeout in ms
+                            type: 'success' // Toastr type
+                        });
+        }
         console.log(response.data);
     })
     .catch(e => {

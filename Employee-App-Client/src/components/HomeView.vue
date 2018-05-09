@@ -9,6 +9,7 @@
         </div>
 
         <div class="container">
+            <button v-on:click="gotoHome()" type="button" class="btn btn-success">Home</button>
             <button v-on:click="gotoAllEmployees()" type="button" class="btn btn-success">View All Employees</button>
         </div>
 
@@ -24,7 +25,12 @@ export default {
     };
   },
   methods: {
-  
+      gotoHome: function(){
+          this.$router.push({
+              name: 'home',
+              params: {}
+          });
+      },
       gotoAllEmployees: function(){
           this.$router.push({
               name: 'allEmployees',

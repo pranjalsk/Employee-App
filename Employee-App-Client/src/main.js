@@ -3,8 +3,9 @@ import App from './App.vue'
 import VueMaterial from 'vue-material'
 import VueRouter from 'vue-router'
 import VeeValidate from 'vee-validate'
+import VueToastr from '@deveodk/vue-toastr'
 import 'vue-material/dist/vue-material.min.css'
-
+import '@deveodk/vue-toastr/dist/@deveodk/vue-toastr.css'
 // Components regstration
 import HomeView from './components/HomeView.vue'
 import EmployeeTable from './components/EmployeeTable.vue'
@@ -20,6 +21,13 @@ import { store } from './store';
 Vue.use(VueRouter);
 Vue.use(VueMaterial);
 Vue.use(VeeValidate);
+Vue.use(VueToastr, {
+  defaultPosition: 'toast-top-center',
+  defaultType: 'info',
+  defaultTimeout: 2000
+})
+
+
 
 Vue.component('app-homeview', HomeView);
 Vue.component('app-employeeTableView', EmployeeTable);
