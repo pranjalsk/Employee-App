@@ -3,65 +3,75 @@
         <div class="container">
         <form>
             <div class="form-group row">
-                <label for="colFormLabel" class="col-sm-2 col-form-label">FirstName</label>
+                <label for="colFormLabel" class="col-sm-2 col-form-label">FirstName*</label>
                 <div class="col-sm-6">
-                <input v-model="emp.firstName" type="input" class="form-control" id="FirstName" required>
+                <input v-model="emp.firstName" type="input" class="form-control" name="FirstName" v-validate="'required|alpha'" >
+                <span v-show="errors.has('FirstName')">{{ errors.first('FirstName') }}</span>
+                </div>
+                
+            </div>
+
+            <div class="form-group row">
+                <label for="colFormLabel" class="col-sm-2 col-form-label">MiddleName*</label>
+                <div class="col-sm-6">
+                <input v-model="emp.middleName" type="input" class="form-control" name="MiddleName" v-validate="'required|alpha'" >
+                 <span v-show="errors.has('FirstName')">{{ errors.first('FirstName') }}</span>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="colFormLabel" class="col-sm-2 col-form-label">MiddleName</label>
+                <label for="colFormLabel" class="col-sm-2 col-form-label">LastName*</label>
                 <div class="col-sm-6">
-                <input v-model="emp.middleName" type="input" class="form-control" id="MiddleName" required>
+                <input v-model="emp.lastName" type="input" class="form-control" name="LastName" v-validate="'required|alpha'" >
+                <span v-show="errors.has('LastName')">{{ errors.first('LastName') }}</span>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="colFormLabel" class="col-sm-2 col-form-label">LastName</label>
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Department*</label>
                 <div class="col-sm-6">
-                <input v-model="emp.lastName" type="input" class="form-control" id="LastName" required>
+                <input v-model="emp.department" type="input" class="form-control" name="Department" v-validate="'required|alpha_dash'" >
+                <span v-show="errors.has('Department')">{{ errors.first('Department') }}</span>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="colFormLabel" class="col-sm-2 col-form-label">Department</label>
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Role*</label>
                 <div class="col-sm-6">
-                <input v-model="emp.department" type="input" class="form-control" id="Department" required>
+                <input v-model="emp.role" type="input" class="form-control" name="Role" v-validate="'required|alpha_dash'" >
+                <span v-show="errors.has('Role')">{{ errors.first('Role') }}</span>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="colFormLabel" class="col-sm-2 col-form-label">Role</label>
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Base Salary*</label>
                 <div class="col-sm-6">
-                <input v-model="emp.role" type="input" class="form-control" id="Role" required>
+                <input v-model="emp.baseSalary" type="number" class="form-control" name="BaseSalary" v-validate="'required|numeric'">
+                <span v-show="errors.has('BaseSalary')">{{ errors.first('BaseSalary') }}</span>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="colFormLabel" class="col-sm-2 col-form-label">Base Salary</label>
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Allowances*</label>
                 <div class="col-sm-6">
-                <input v-model="emp.baseSalary" type="input" class="form-control" id="BaseSalary" required>
+                <input v-model="emp.allowance" type="number" class="form-control" name="Allowances" v-validate="'required|numeric'">
+                <span v-show="errors.has('Allowances')">{{ errors.first('Allowances') }}</span>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="colFormLabel" class="col-sm-2 col-form-label">Allowances</label>
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Tax 401k Deductions*</label>
                 <div class="col-sm-6">
-                <input v-model="emp.allowance" type="input" class="form-control" id="Allowances" required>
+                <input v-model="emp.tax401k" type="number" class="form-control" name="Tax401kDeductions" v-validate="'required|numeric'">
+                <span v-show="errors.has('Tax401kDeductions')">{{ errors.first('Tax401kDeductions') }}</span>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="colFormLabel" class="col-sm-2 col-form-label">Tax 401k Deductions</label>
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Medical Deductions*</label>
                 <div class="col-sm-6">
-                <input v-model="emp.tax401k" type="input" class="form-control" id="Tax401kDeductions" required>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="colFormLabel" class="col-sm-2 col-form-label">Medical Deductions</label>
-                <div class="col-sm-6">
-                <input v-model="emp.medical" type="input" class="form-control" id="MedicalDeductions" required>
+                <input v-model="emp.medical" type="number" class="form-control" name="MedicalDeductions" v-validate="'required|numeric'">
+                <span v-show="errors.has('MedicalDeductions')">{{ errors.first('MedicalDeductions') }}</span>
                 </div>
             </div>
 
@@ -99,13 +109,13 @@ function addEmployeeRecord(vm){
             };
 
     console.log(postbody);
-    axios.post(`http://localhost:3000/employees/`, postbody)
+    axios.post( vm.$store.state.IP_Config +`/employees/`, postbody)
     .then(response => {
         //TODO if true...tell success
         console.log(response.data);
     })
     .catch(e => {
-      this.errors.push(e)
+      this.reqerrors.push(e)
     })  
 
 };
@@ -115,7 +125,7 @@ export default {
   data() {
     return {
         emp: {},
-        errors: []
+        reqerrors: []
     };
   },
   methods:{

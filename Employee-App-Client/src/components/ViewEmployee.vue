@@ -61,7 +61,7 @@ function getEmployeeInfo(vm){
     let  employeeid = vm.$route.params.employeeid;
 
     axios
-    .get(`http://localhost:3000/employees/`+employeeid)
+    .get( vm.$store.state.IP_Config +`/employees/`+employeeid)
     .then(response => {
         //vm.employee = response.data;
         vm.employee = {};

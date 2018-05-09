@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueMaterial from 'vue-material'
 import VueRouter from 'vue-router'
+import VeeValidate from 'vee-validate'
 import 'vue-material/dist/vue-material.min.css'
 
 // Components regstration
@@ -14,9 +15,11 @@ import AddEmployee from './components/AddEmployee.vue'
 
 // Routes resitration
 import { routes } from './routes';
+import { store } from './store';
 
 Vue.use(VueRouter);
-Vue.use(VueMaterial)
+Vue.use(VueMaterial);
+Vue.use(VeeValidate);
 
 Vue.component('app-homeview', HomeView);
 Vue.component('app-employeeTableView', EmployeeTable);
@@ -34,6 +37,7 @@ const router = new VueRouter({
 
 new Vue({
   el: '#app',
+  store: store,
   router: router,
   render: h => h(App)
 })

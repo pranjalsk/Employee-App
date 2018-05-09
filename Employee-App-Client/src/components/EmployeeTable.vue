@@ -40,7 +40,7 @@ import axios from "axios";
 function getEmployees(vm){
     
     axios
-    .get(`http://localhost:3000/employees`)
+    .get( vm.$store.state.IP_Config + `/employees`)
     .then(response => {
       vm.employees = response.data.employees;
     })

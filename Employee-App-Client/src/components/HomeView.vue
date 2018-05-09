@@ -2,8 +2,9 @@
     <div>
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1>Human Capital Information System</h1>      
-                <h5>This application provides information about all the employees at "Hogwards Corporation"</h5>
+                <h1><strong>Human Capital Information System</strong></h1>      
+                <h3><i>Hogwarts Corporation</i></h3>      
+                <h6>This application provides information about all the employees at "Hogwarts Corporation"</h6>
             </div>
         </div>
 
