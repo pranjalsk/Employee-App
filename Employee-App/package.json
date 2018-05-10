@@ -3,16 +3,20 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "./node_modules/.bin/jasmine-node spec"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
     "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
+    "jasmine-node": "^1.14.5",
     "mongoose": "^5.0.17",
-    "morgan": "~1.9.0"
+    "morgan": "~1.9.0",
+    "request": "^2.85.0"
   }
 }

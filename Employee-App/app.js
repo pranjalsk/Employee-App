@@ -3,7 +3,7 @@ var express = require('express');
 var models = require('./models/models.js');
 var path = require('path');
 var bodyParser = require('body-parser');
-
+var cors = require('cors');
 
 //conenct to DB
 models.createModels();
@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
-
+app.use(cors())
 
 //Register Routes
 app.use('/', indexRouter);

@@ -8,6 +8,20 @@ var sendInternalServerError = function(err,res){
     res.status(501).send(err);
 };
 
+var invalidInput = function (err, res) {
+	res.status(400).send(err);
+};
+
+var validateBody = function( body ){
+    if(!body.name.firstName) invalidInput('invalid firstname',res);
+    if(!body.name.middleName) invalidInput('invalid middlename',res);
+    if(!body.name.lastName) invalidInput('invalid lastname',res);
+    if(!body.department) invalidInput('invalid department',res);
+    if(!body.role) invalidInput('invalid role',res);
+    if(!body.compensation.salary) invalidInput('invalid compensation',res);
+    if(!body.compensation.deductions) invalidInput('invalid compensation',res);
+    return true;
+};
 
 exports.getAllEmployees = function(res, params){
 
@@ -60,8 +74,8 @@ exports.getEmployeeById = function(res,id){
 
 exports.addNewEmployee = function(res, body){
 
-    console.log(body);
-    //TODO: add validations
+    validateBody(body);
+
     let employee = {};
     //GetCount
     employeeModel.find().count(function(err, count){
@@ -93,13 +107,7 @@ exports.addNewEmployee = function(res, body){
 
 exports.updateEmployeeById = function (res, body, id){
 
-        //validations
-    
-        // let employeeUpdate = {
-        //     department : body.department,
-        //     role : body.role
-        // };
-        
+        console.log(body);
         var query = employeeModel.update({employeeId:id, isDeleted:false}, body);
     
         query.exec(
