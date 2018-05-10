@@ -27,6 +27,33 @@ describe("Get all employees", function(){
         });
 
     });
+
+
+    describe("GET /", function() {	  
+        let url = base_url + "/1";
+		it("Check status code of GET all employees", function(done) {            
+            request.get(url, function (error, response) {
+                expect(response.statusCode).toEqual(200);
+                done();
+            });
+        });
+
+        it("Check body of GET all employees", function(done) {            
+            request.get(url, function (error, response, body) {
+                let parsed_body = JSON.parse(body);
+                expect(parsed_body).not.toEqual(null);
+                done();
+            });
+        });
+
+        it("PUT request at get endpoint should return 404", function(done) {            
+            request.post(url, function (error, response, body) {
+                expect(response.statusCode).toBe(404);
+                done();
+            });
+        });
+
+    });
     
     describe("POST /", function() {	  
         let url = base_url;
