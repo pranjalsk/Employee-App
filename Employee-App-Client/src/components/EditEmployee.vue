@@ -7,15 +7,14 @@
                 <div class="col-sm-6">
                 <input v-model="emp.firstName" type="input" class="form-control" name="FirstName" v-validate="'required|alpha'" >
                 <span v-show="errors.has('FirstName')">{{ errors.first('FirstName') }}</span>
-                </div>
-                
+                </div>    
             </div>
 
             <div class="form-group row">
                 <label for="colFormLabel" class="col-sm-2 col-form-label">MiddleName*</label>
                 <div class="col-sm-6">
                 <input v-model="emp.middleName" type="input" class="form-control" name="MiddleName" v-validate="'required|alpha'" >
-                 <span v-show="errors.has('FirstName')">{{ errors.first('FirstName') }}</span>
+                 <span v-show="errors.has('MiddleName')">{{ errors.first('MiddleName') }}</span>
                 </div>
             </div>
 
